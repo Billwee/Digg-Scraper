@@ -6,6 +6,14 @@ var db = require("../models");
 module.exports = function (app) {
   app.get("/", function (req, res) {
     // res.sendFile(path.join(__dirname, "../views/layouts/main"));
-    res.render("index", { test: "teeafasfaef" });
+    var crap;
+    db.Article.find({})
+      .then((data) => {
+        // console.log(data);
+        res.render("index", { obj: data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
 };

@@ -1,3 +1,31 @@
-<h1>aw;lkn;wlng</h1>
+<div class="container mt-3">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Saved Articles</a>
+    </li>
+  </ul>
+</div>
+<div class="container">
+  <div class="jumbotron">
+    <div class="main d-flex justify-content-center">
+      <div>
+        <img id="logo" src="/img/logo.png" alt="">
+      </div>
+      <div class="flex-column">
+        <div class="py-5 my-4">
+          <button id="scrape" type="button" class="btn-lg btn-outline-primary">Scrape</button>
+        </div>
+        <div class="pt-5 mt-3">
+          <button id="clear" type="button" class="btn-lg btn-outline-primary">Clear</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-{{test}}
+<div class="container">
+  {{> articles}}
+</div>

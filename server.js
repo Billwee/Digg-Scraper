@@ -2,8 +2,6 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
 var mongoose = require("mongoose");
-var axios = require("axios");
-var cheerio = require("cheerio");
 var morgan = require("morgan");
 
 // Setting the port
@@ -30,12 +28,14 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-// Require all models
+//Require all models
 // var db = require("./models");
 
 // Connect to Mongo
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/diggScraper";
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+});
 
 //Start Server
 app.listen(PORT, function () {
