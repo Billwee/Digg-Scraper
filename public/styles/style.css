@@ -1,3 +1,11 @@
 #logo {
   max-width: 400px;
 }
+
+#articleCard {
+  margin: 20px 0;
+}
+
+#saved {
+  cursor: default;
+}

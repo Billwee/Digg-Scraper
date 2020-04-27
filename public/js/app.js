@@ -30,24 +30,16 @@ $(document).ready(function () {
     });
   });
 
-  $("#artDiv").on("click", ".save", (event) => {
+  $("#artDiv").on("click", ".save", function (event) {
     event.preventDefault();
     let id = $(this).attr("data-id");
 
-    console.log($(this).data("id"));
-    console.log($(this).attr(""));
-    console.log(id);
-    console.log($(this));
-  });
-
-  $(".save").on("click", (event) => {
-    event.preventDefault();
-    let id = $(this).attr("data-id");
-
-    console.log($(this).data("id"));
-    console.log($(this).attr(""));
-    console.log("wadadaw");
-    console.log($(this).attr("data-id"));
+    $.ajax({
+      url: `/save/${id}`,
+      type: "POST",
+      success: (data) => {},
+    });
+    location.reload();
   });
 
   //READY

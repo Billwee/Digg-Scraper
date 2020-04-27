@@ -36,13 +36,20 @@ module.exports = function (app) {
           article.link = link.trim();
         }
 
-        db.Article.create(article)
-          .then((data) => {
-            // console.log(data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        db.Save.findOne({ altHead: article.altHead }, function (err, data) {
+          console.log(data);
+          if (data) {
+            article.saved = true;
+            db.Article.create(article, function (err, data) {
+              if (err) throw err;
+            });
+          } else {
+            article.saved = false;
+            db.Article.create(article, function (err, data) {
+              if (err) throw err;
+            });
+          }
+        });
       });
       res.end();
     });
@@ -57,5 +64,23 @@ module.exports = function (app) {
       .catch((err) => {
         console.log(err);
       });
+  });
+
+  app.post("/save/:id", (req, res) => {
+    // console.log(req.params.id);
+    db.Article.findOneAndUpdate({ _id: req.params.id }, { saved: true }).then(
+      (data) => {
+        console.log(data);
+        let clone = {};
+        clone.altHead = data.altHead;
+        clone.headline = data.headline;
+        clone.desc = data.desc;
+        clone.link = data.link;
+        db.Save.create(clone, (err, data2) => {
+          if (err) throw err;
+          res.end();
+        });
+      }
+    );
   });
 };
