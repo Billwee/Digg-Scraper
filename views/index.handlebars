@@ -26,6 +26,20 @@
   </div>
 </div>
 
-<div class="container">
-  {{> articles}}
+<div id="artDiv" class="container">
+  {{#obj}}
+  {{#each .}}
+  {{#if headline}}
+  <div id="articleCard" class="card">
+    <h5 class="card-header">{{altHead}}</h5>
+    <div class="card-body">
+      <h5 class="card-title">{{headline}}</h5>
+      <p class="card-text">{{desc}}</p>
+      <a href="{{link}}" target="_blank" class="btn btn-primary">Visit</a>
+      <button data-id="{{_id}}" type="button" class="btn btn-success save">Save</button>
+    </div>
+  </div>
+  {{/if}}
+  {{/each}}
+  {{/obj}}
 </div>

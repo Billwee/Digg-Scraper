@@ -5,6 +5,11 @@ var db = require("../models");
 
 module.exports = function (app) {
   app.get("/scrape", (req, res) => {
+    db.Article.deleteMany({})
+      .then((data) => {})
+      .catch((err) => {
+        console.log(err);
+      });
     axios.get("https://digg.com/").then((response) => {
       let $ = cheerio.load(response.data);
 
@@ -22,24 +27,22 @@ module.exports = function (app) {
           .children("a")
           .text();
 
-        article.altHead = altHead.substring(1, altHead.length - 1);
-        article.headline = headline.substring(1, headline.length - 1);
-        article.desc = desc;
-        article.link = link;
+        article.altHead = altHead.substring(1, altHead.length - 1).trim();
+        article.headline = headline.substring(1, headline.length - 1).trim();
+        article.desc = desc.trim();
+        if (link.charAt(0) === "/") {
+          article.link = "https://digg.com" + link.trim();
+        } else {
+          article.link = link.trim();
+        }
 
-        db.Article.exists(article, (err, data) => {
-          if (data) {
-            console.log("duplicate");
-          } else {
-            db.Article.create(article)
-              .then((data) => {
-                // console.log(data);
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          }
-        });
+        db.Article.create(article)
+          .then((data) => {
+            // console.log(data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       });
       res.end();
     });
