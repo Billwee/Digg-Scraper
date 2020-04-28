@@ -1,3 +1,4 @@
+{{#if obj}}
 {{#obj}}
 {{#each .}}
 {{#if headline}}
@@ -8,7 +9,7 @@
     <p class="card-text">{{desc}}</p>
     <a href="{{link}}" target="_blank" class="btn btn-primary">Visit</a>
     {{#if saved}}
-    <button id="saved" type="button" class="btn btn-danger save" disabled>Saved</button>
+    <button id="saved" type="button" class="btn btn-success save" disabled>Saved</button>
     {{else}}
     <button data-id="{{_id}}" data-control="saveBtn" type="button" class="btn btn-success save">Save</button>
     {{/if}}
@@ -17,3 +18,13 @@
 {{/if}}
 {{/each}}
 {{/obj}}
+{{else}}
+<div class="card text-center">
+  <h4 class="card-header">
+    No Articles Scraped
+  </h4>
+  <div class="card-body">
+    <p class="card-text">Click the Scrape button above to get some articles!</p>
+  </div>
+</div>
+{{/if}}

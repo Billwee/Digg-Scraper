@@ -1,23 +1,89 @@
 <div class="container mt-3">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link" href="#">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active">Saved Articles</a>
-    </li>
-  </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div>
+      <a class="navbar-brand" href="/"><img id="navLogo" src="/img/navLogo.png" width="50" height="50" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/saved">Saved Articles <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </div>
 <div class="container">
-  <div class="jumbotron">
-    <div class="main d-flex justify-content-center">
-      <div>
-        <img id="logo" src="/img/logo.png" alt="">
+  <div class="jumbotron text-center">
+    <img id="logo" src="/img/logo.png" alt="">
+  </div>
+</div>
+
+<div id="saveDiv" class="container">
+  {{> savedPartial}}
+</div>
+
+<!-- Write Note Modal -->
+<div id="theModal" class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Write Note</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="noteForm" onsubmit="return false">
+          <div class="form-group">
+            <label for="noteTitle">Title:</label>
+            <input type="text" class="form-control" id="noteTitle">
+          </div>
+          <div class="form-group">
+            <label for="noteText">Note:</label>
+            <textarea class="form-control" id="noteText" rows="5"></textarea>
+          </div>
+          <div id="noteSuccess" class="alert alert-success" role="alert">
+            Note Saved Successfully
+          </div>
+          <div id="noteFailure" class="alert alert-danger" role="alert">
+            Please Fill Both Fields
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        {{!-- Add data-dismiss="modal" to save note button --}}
+        <button type="submit" id="saveNoteBtn" form="noteForm" class="btn btn-success">Save Note</button>
       </div>
     </div>
   </div>
 </div>
 
-<div id="saveDiv" class="container">
-  {{> saved}}
+<!-- Show Notes Modal -->
+<div id="notesModal" class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Saved Notes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="notesModalBody" class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

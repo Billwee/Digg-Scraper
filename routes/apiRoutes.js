@@ -37,7 +37,7 @@ module.exports = function (app) {
         }
 
         db.Save.findOne({ altHead: article.altHead }, function (err, data) {
-          console.log(data);
+          // console.log(data);
           if (data) {
             article.saved = true;
             db.Article.create(article, function (err, data) {
@@ -51,7 +51,7 @@ module.exports = function (app) {
           }
         });
       });
-      res.end();
+      res.redirect("back");
     });
   });
 
@@ -82,5 +82,53 @@ module.exports = function (app) {
         });
       }
     );
+  });
+
+  app.post("/savenote/:id", (req, res) => {
+    // Create a new note and pass the req.body to the entry
+    db.Note.create(req.body)
+      .then(function (data) {
+        return db.Save.findOneAndUpdate(
+          { _id: req.params.id },
+          { note: data._id },
+          { new: true }
+        );
+      })
+      .then(function (data) {
+        // If we were able to successfully update an Article, send it back to the client
+        res.json(data);
+      })
+      .catch(function (err) {
+        // If an error occurred, send it to the client
+        res.json(err);
+      });
+  });
+
+  app.get("/notes/:id", (req, res) => {
+    db.Note.find({ artID: req.params.id }).then((data) => {
+      res.json(data);
+    });
+  });
+
+  app.delete("/delete/:id", (req, res) => {
+    db.Save.findOneAndDelete({ _id: req.params.id }).then((data) => {
+      console.log(data);
+      db.Article.findOneAndUpdate(
+        { altHead: data.altHead },
+        { saved: false }
+      ).then((data) => {
+        console.log(data);
+        db.Note.deleteMany({ artID: req.params.id }).then((data) => {
+          console.log(data);
+          res.end();
+        });
+      });
+    });
+  });
+
+  app.delete("/deleteNote/:id", (req, res) => {
+    db.Note.deleteOne({ _id: req.params.id }, (err, data) => {
+      res.send(data);
+    });
   });
 };

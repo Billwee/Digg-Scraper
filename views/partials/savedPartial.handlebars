@@ -1,0 +1,30 @@
+{{#if obj}}
+{{#obj}}
+{{#each .}}
+{{#if headline}}
+<div id="articleCard" class="card">
+  <h5 class="card-header">{{altHead}}</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{headline}}</h5>
+    <p class="card-text">{{desc}}</p>
+    <a href="{{link}}" target="_blank" class="btn btn-primary">Visit</a>
+    <button id="writeNoteBtn" data-id="{{_id}}" data-toggle="modal" data-target="#staticBackdrop" type="button"
+      class="btn btn-info writeNote">Write Note</button>
+    <button id="readNoteBtn" data-id="{{_id}}" data-toggle="modal" data-target="#staticBackdrop" type="button"
+      class="btn btn-secondary readNote">Read Notes</button>
+    <button data-id="{{_id}}" type="button" class="btn btn-danger delete">Delete</button>
+  </div>
+</div>
+{{/if}}
+{{/each}}
+{{/obj}}
+{{else}}
+<div class="card text-center">
+  <h4 class="card-header">
+    No Articles Saved
+  </h4>
+  <div class="card-body">
+    <p class="card-text">Go back to the home page to save some articles!</p>
+  </div>
+</div>
+{{/if}}
