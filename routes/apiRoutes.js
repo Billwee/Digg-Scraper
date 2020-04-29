@@ -6,7 +6,7 @@ var db = require("../models");
 module.exports = function (app) {
   app.get("/scrape", (req, res) => {
     db.Article.deleteMany({})
-      .then((data) => {})
+      .then((data) => { })
       .catch((err) => {
         console.log(err);
       });
@@ -51,7 +51,7 @@ module.exports = function (app) {
           }
         });
       });
-      res.redirect("back");
+      res.end();
     });
   });
 

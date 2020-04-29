@@ -1,9 +1,4 @@
 $(document).ready(function () {
-  // $(window).bind("pageshow", function (event) {
-  //   if (event.originalEvent.persisted) {
-  //     window.location.reload();
-  //   }
-  // });
 
   $("#scrape").on("click", (event) => {
     event.preventDefault();
@@ -36,9 +31,10 @@ $(document).ready(function () {
     $.ajax({
       url: `/save/${id}`,
       type: "POST",
-      success: (data) => {},
+      success: (data) => {
+        location.reload();
+      }
     });
-    location.reload();
   });
 
   $("#saveDiv").on("click", "#writeNoteBtn", function (event) {
