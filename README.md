@@ -1,13 +1,13 @@
 # Digg-Scraper
 
-Digg Scraper is an Node.js based application that pulls article info from http://www.digg.com and displays it in a simple card format. It also allows users to save articles and comments on them to a Mongo database.
+Digg Scraper is a Node.js based application that pulls article info from http://www.digg.com and displays it in a simple card format. It also allows users to save articles and comments on them to a Mongo database.
 
 ## Deployment
 You can view Digg Scraper by [Clicking Here](https://digg-scraper.herokuapp.com/)
 
 ## Overview
 
-The view of the page is related to it's database. So visiting the application can display either two things.
+The view of the page is related to its database. So visiting the application can display either two things.
 
 - Previous articles scraped from another user
 
