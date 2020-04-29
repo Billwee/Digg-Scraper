@@ -43,7 +43,9 @@ $(document).ready(function () {
       url: `/save/${id}`,
       type: "POST",
       success: (data) => {
-        location.reload();
+        $(this).prop({ disabled: true })
+        $(this).attr("id", "saved")
+        $(this).html(`<i class="fas fa-save" aria-hidden="true"></i> Saved`)
       }
     });
   });
@@ -143,7 +145,7 @@ $(document).ready(function () {
       type: "DELETE",
       success: () => {
         console.log("deleted");
-        location.reload();
+        $(this).parent().parent().remove()
       },
     });
   });
