@@ -24,6 +24,11 @@
   margin: 0 10px;
 }
 
-.deleteNote {
-  margin-bottom: 40px;
+
+#topBtn{
+  display: none;
+  margin: 10px;
 }
+
+
+

@@ -50,17 +50,16 @@
             <label for="noteText">Note:</label>
             <textarea class="form-control" id="noteText" rows="5"></textarea>
           </div>
-          <div id="noteSuccess" class="alert alert-success" role="alert">
+          <div id="noteSuccess" class="alert alert-success text-center" role="alert">
             Note Saved Successfully
           </div>
-          <div id="noteFailure" class="alert alert-danger" role="alert">
+          <div id="noteFailure" class="alert alert-danger text-center" role="alert">
             Please Fill Both Fields
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        {{!-- Add data-dismiss="modal" to save note button --}}
         <button type="submit" id="saveNoteBtn" form="noteForm" class="btn btn-success">Save Note</button>
       </div>
     </div>
@@ -87,3 +86,12 @@
     </div>
   </div>
 </div>
+
+{{!-- Footer for Top of Page button --}}
+<nav id="footer" class="navbar fixed-bottom navbar-light bg-transparent">
+  <div class="container">
+    <a id="topBtn" class="btn btn-dark ml-auto" href="#top" role="button"><i class="fas fa-arrow-circle-up"></i> Back
+      to
+      Top</a>
+  </div>
+</nav>

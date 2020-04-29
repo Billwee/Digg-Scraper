@@ -7,11 +7,13 @@
   <div class="card-body">
     <h5 class="card-title">{{headline}}</h5>
     <p class="card-text">{{desc}}</p>
-    <a href="{{link}}" target="_blank" class="btn btn-primary">Visit</a>
+    <a id="visit" href="{{link}}" target="_blank" class="btn btn-primary"><i class="fas fa-globe-americas"></i>
+      Visit</a>
     {{#if saved}}
-    <button id="saved" type="button" class="btn btn-success save" disabled>Saved</button>
+    <button id="saved" type="button" class="btn btn-success" disabled><i class="fas fa-save"></i> Saved</button>
     {{else}}
-    <button data-id="{{_id}}" data-control="saveBtn" type="button" class="btn btn-success save">Save</button>
+    <button id="save" data-id="{{_id}}" data-control="saveBtn" type="button" class="btn btn-success save"><i
+        class="far fa-save"></i> Save</button>
     {{/if}}
   </div>
 </div>

@@ -28,8 +28,6 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-//Require all models
-// var db = require("./models");
 
 // Connect to Mongo
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/diggScraper";

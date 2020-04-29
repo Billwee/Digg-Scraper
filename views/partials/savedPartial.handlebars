@@ -7,12 +7,13 @@
   <div class="card-body">
     <h5 class="card-title">{{headline}}</h5>
     <p class="card-text">{{desc}}</p>
-    <a href="{{link}}" target="_blank" class="btn btn-primary">Visit</a>
+    <a href="{{link}}" target="_blank" class="btn btn-primary"><i class="fas fa-globe-americas"></i> Visit</a>
     <button id="writeNoteBtn" data-id="{{_id}}" data-toggle="modal" data-target="#staticBackdrop" type="button"
-      class="btn btn-info writeNote">Write Note</button>
+      class="btn btn-info writeNote"><i class="fas fa-pencil-alt"></i> Write Note</button>
     <button id="readNoteBtn" data-id="{{_id}}" data-toggle="modal" data-target="#staticBackdrop" type="button"
-      class="btn btn-secondary readNote">Read Notes</button>
-    <button data-id="{{_id}}" type="button" class="btn btn-danger delete">Delete</button>
+      class="btn btn-secondary readNote"><i class="fas fa-book"></i> Read Notes</button>
+    <button data-id="{{_id}}" type="button" class="btn btn-danger delete"><i class="far fa-trash-alt"></i>
+      Delete</button>
   </div>
 </div>
 {{/if}}

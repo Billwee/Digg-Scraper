@@ -1,7 +1,16 @@
 $(document).ready(function () {
 
+  //Fades in "Back to Top" button after scrolling
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 400) {
+      $('#topBtn').fadeIn();
+    } else {
+      $('#topBtn').fadeOut();
+    }
+  });
+
+  //Scrape button click function
   $("#scrape").on("click", (event) => {
-    event.preventDefault();
 
     $.ajax({
       url: "/scrape",
@@ -12,6 +21,7 @@ $(document).ready(function () {
     });
   });
 
+  //Clear button click function
   $("#clear").on("click", (event) => {
     event.preventDefault();
 
@@ -25,6 +35,7 @@ $(document).ready(function () {
     });
   });
 
+  //Click function for saving articles
   $("#artDiv").on("click", ".save", function (event) {
     event.preventDefault();
     let id = $(this).attr("data-id");
@@ -37,8 +48,9 @@ $(document).ready(function () {
     });
   });
 
+  //Click function for showing the modal to write a note on
+  //a saved article
   $("#saveDiv").on("click", "#writeNoteBtn", function (event) {
-    console.log("AWdawd");
     id = $(this).data("id");
 
     $("#theModal").modal("show");
@@ -48,6 +60,7 @@ $(document).ready(function () {
     $("#saveNoteBtn").attr("data-id", id);
   });
 
+  //Click function to read notes saved
   $("#saveDiv").on("click", "#readNoteBtn", function (event) {
     $("#notesModal").modal("show");
     $("#notesModalBody").empty();
@@ -63,18 +76,19 @@ $(document).ready(function () {
             $("#notesModalBody").append(`<h3>${element.title}</h3>`);
             $("#notesModalBody").append(`<p>${element.note}</p>`);
             $("#notesModalBody").append(
-              `<button data-id=${element._id} type="button" class="btn btn-danger btn-sm deleteNote">Delete</button>`
+              `<button data-id=${element._id} type="button" class="btn btn-danger btn-sm deleteNote mb-2">Delete Note</button>`
             );
+            $("#notesModalBody").append(`<hr>`);
           });
         }
       },
     });
   });
 
+  //Click function for deleting notes
   $("#notesModalBody").on("click", ".deleteNote", function (event) {
     let id = $(this).data("id");
     $("#notesModal").modal("hide");
-    // $("#myModal").modal("handleUpdate");
 
     $.ajax({
       url: `/deleteNote/${id}`,
@@ -85,8 +99,8 @@ $(document).ready(function () {
     });
   });
 
+  //Click function for saving notes
   $("#saveNoteBtn").on("click", function (event) {
-    // event.preventDefault();
     let title = $("#noteTitle").val().trim();
     let note = $("#noteText").val().trim();
     let id = $("#saveNoteBtn").data("id");
@@ -120,6 +134,7 @@ $(document).ready(function () {
     }
   });
 
+  // Click function for deleting saved articles
   $("#saveDiv").on("click", ".delete", function (event) {
     let id = $($(this)).data("id");
 
@@ -133,5 +148,4 @@ $(document).ready(function () {
     });
   });
 
-  //READY
 });
