@@ -1,5 +1,13 @@
 $(document).ready(function () {
 
+  // This section of code relaods the page if the back button is pressed
+  // since the route is never called again when using it.
+  var perfEntries = performance.getEntriesByType("navigation");
+  if (perfEntries[0].type === "back_forward") {
+    location.reload(true);
+  }
+
+
   //Fades in "Back to Top" button after scrolling
   $(window).scroll(function () {
     if ($(this).scrollTop() > 400) {
