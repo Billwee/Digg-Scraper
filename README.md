@@ -5,6 +5,21 @@ Digg Scraper is a Node.js based application that pulls article info from http://
 ## Deployment
 You can view Digg Scraper by [Clicking Here](https://digg-scraper.herokuapp.com/)
 
+## Technology Used
+- JavaScript
+- Node.js
+- Axios
+- Cheerio
+- Express
+- Handlebars
+- Mongoose
+- HTML
+- CSS
+- Bootstrap
+- jQuery
+- MongoDB
+
+
 ## Overview
 
 The view of the page is related to its database. So visiting the application can display either two things.
