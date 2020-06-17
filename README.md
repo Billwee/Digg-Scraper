@@ -19,7 +19,7 @@ Either way, if articles are scraped, users have the option to save them to a sep
 Users also have the option to create notes (header and body) for each saved article. Once created, these notes are saved to a separate database for viewing in their own modal popup. Also in this modal popup is the option to delete individual notes.
 
 ## Application Walkthrough
-### Inital loaded page (if no articles were left by another user).
+### Initially loaded page (if no articles were left by another user).
 ![Cleared](./public/img/walk.PNG)
 ### After scraping, the articles currently on Digg load in a card format. Users can save articles they wish to look at later.
 ![Cleared](./public/img/walk1.PNG)
